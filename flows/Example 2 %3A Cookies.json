@@ -1,0 +1,306 @@
+[
+  {
+    "id": "f0421dd89023bcf4",
+    "type": "tab",
+    "label": "Example 2 : Cookies",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "caf806fd0a2faf01",
+    "type": "inject",
+    "z": "f0421dd89023bcf4",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 180,
+    "y": 80,
+    "wires": [
+      [
+        "12582a7e503867c9"
+      ]
+    ]
+  },
+  {
+    "id": "12582a7e503867c9",
+    "type": "open browser",
+    "z": "f0421dd89023bcf4",
+    "name": "",
+    "browserType": "chrome",
+    "webURL": "https://simonradier.github.io/simple-webdriver/test/html/",
+    "width": 1280,
+    "height": 1024,
+    "timeout": 3000,
+    "maximized": true,
+    "headless": false,
+    "args": [],
+    "serverURL": "http://localhost:9515",
+    "x": 190,
+    "y": 160,
+    "wires": [
+      [
+        "9b8dbcec2e59e672"
+      ]
+    ]
+  },
+  {
+    "id": "5a51c46752286227",
+    "type": "debug",
+    "z": "f0421dd89023bcf4",
+    "name": "Result",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 850,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "f07f4e70bc28c542",
+    "type": "close browser",
+    "z": "f0421dd89023bcf4",
+    "name": "",
+    "waitFor": 500,
+    "x": 690,
+    "y": 460,
+    "wires": [
+      [
+        "5a51c46752286227"
+      ]
+    ]
+  },
+  {
+    "id": "9b8dbcec2e59e672",
+    "type": "get title",
+    "z": "f0421dd89023bcf4",
+    "name": "",
+    "expected": "WD2 Test Page",
+    "timeout": 3000,
+    "waitFor": 500,
+    "x": 180,
+    "y": 260,
+    "wires": [
+      [
+        "45314bc6d0d0b6d2",
+        "f3d47f690c1d69ed"
+      ],
+      [
+        "f08f6dcd21ded000"
+      ]
+    ]
+  },
+  {
+    "id": "45314bc6d0d0b6d2",
+    "type": "debug",
+    "z": "f0421dd89023bcf4",
+    "name": "payload",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 640,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "20992e44e0799919",
+    "type": "link in",
+    "z": "f0421dd89023bcf4",
+    "name": "link in 1",
+    "links": [],
+    "x": 575,
+    "y": 460,
+    "wires": [
+      [
+        "f07f4e70bc28c542"
+      ]
+    ]
+  },
+  {
+    "id": "f08f6dcd21ded000",
+    "type": "link call",
+    "z": "f0421dd89023bcf4",
+    "name": "End",
+    "links": [
+      "20992e44e0799919"
+    ],
+    "linkType": "static",
+    "timeout": "30",
+    "x": 610,
+    "y": 340,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "f3d47f690c1d69ed",
+    "type": "get text",
+    "z": "f0421dd89023bcf4",
+    "name": "",
+    "expected": "test id",
+    "selector": "id",
+    "target": "id_1234",
+    "mode": "first",
+    "timeout": 1000,
+    "waitFor": 500,
+    "savetofile": false,
+    "x": 180,
+    "y": 340,
+    "wires": [
+      [
+        "45314bc6d0d0b6d2",
+        "f289b8bbe0ded55d"
+      ],
+      [
+        "f08f6dcd21ded000"
+      ]
+    ]
+  },
+  {
+    "id": "f289b8bbe0ded55d",
+    "type": "get cookie",
+    "z": "f0421dd89023bcf4",
+    "name": "",
+    "cookieName": "cookie2",
+    "timeout": 3000,
+    "waitFor": 500,
+    "x": 190,
+    "y": 440,
+    "wires": [
+      [
+        "45314bc6d0d0b6d2",
+        "d56f71a3cf4f2243"
+      ],
+      [
+        "f08f6dcd21ded000"
+      ]
+    ]
+  },
+  {
+    "id": "b5a68dfd94d1ba04",
+    "type": "get cookie",
+    "z": "f0421dd89023bcf4",
+    "name": "Get test cookie",
+    "cookieName": "test",
+    "timeout": 3000,
+    "waitFor": 500,
+    "x": 200,
+    "y": 600,
+    "wires": [
+      [
+        "4a5548620e295f42",
+        "45314bc6d0d0b6d2"
+      ],
+      [
+        "f08f6dcd21ded000"
+      ]
+    ]
+  },
+  {
+    "id": "d56f71a3cf4f2243",
+    "type": "set cookie",
+    "z": "f0421dd89023bcf4",
+    "name": "Create test cookie",
+    "delete": false,
+    "advanced": false,
+    "cookieName": "test",
+    "cookieValue": "test",
+    "cookiePath": "",
+    "cookieDomain": "",
+    "cookieSecure": false,
+    "cookieHttpOnly": false,
+    "cookieExpiry": "",
+    "timeout": 3000,
+    "waitFor": 500,
+    "x": 210,
+    "y": 520,
+    "wires": [
+      [
+        "b5a68dfd94d1ba04"
+      ],
+      [
+        "45314bc6d0d0b6d2"
+      ]
+    ]
+  },
+  {
+    "id": "4a5548620e295f42",
+    "type": "set cookie",
+    "z": "f0421dd89023bcf4",
+    "name": "Delete test cookie",
+    "delete": true,
+    "advanced": false,
+    "cookieName": "test",
+    "cookieValue": "test",
+    "cookiePath": "",
+    "cookieDomain": "",
+    "cookieSecure": false,
+    "cookieHttpOnly": false,
+    "cookieExpiry": "",
+    "timeout": 3000,
+    "waitFor": 500,
+    "x": 210,
+    "y": 680,
+    "wires": [
+      [
+        "63ab3c1332419b7c"
+      ],
+      [
+        "f08f6dcd21ded000"
+      ]
+    ]
+  },
+  {
+    "id": "63ab3c1332419b7c",
+    "type": "get cookie",
+    "z": "f0421dd89023bcf4",
+    "name": "Get test cookie again",
+    "cookieName": "test",
+    "timeout": 3000,
+    "waitFor": 500,
+    "x": 220,
+    "y": 780,
+    "wires": [
+      [
+        "45314bc6d0d0b6d2"
+      ],
+      [
+        "f08f6dcd21ded000"
+      ]
+    ]
+  },
+  {
+    "id": "f1a5b48fb0c7658b",
+    "type": "comment",
+    "z": "f0421dd89023bcf4",
+    "name": "Get test cookie should fail",
+    "info": "",
+    "x": 230,
+    "y": 740,
+    "wires": []
+  }
+]

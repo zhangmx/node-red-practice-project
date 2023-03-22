@@ -1,0 +1,283 @@
+[
+  {
+    "id": "344d20bdc278fdd1",
+    "type": "tab",
+    "label": "Example 3 : Frames",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "5894633167536a87",
+    "type": "inject",
+    "z": "344d20bdc278fdd1",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 180,
+    "y": 80,
+    "wires": [
+      [
+        "61c8946dda8dcedb"
+      ]
+    ]
+  },
+  {
+    "id": "61c8946dda8dcedb",
+    "type": "open browser",
+    "z": "344d20bdc278fdd1",
+    "name": "",
+    "browserType": "chrome",
+    "webURL": "https://simonradier.github.io/simple-webdriver/test/html/",
+    "width": 1280,
+    "height": 1024,
+    "timeout": 3000,
+    "maximized": true,
+    "headless": false,
+    "args": [],
+    "serverURL": "http://localhost:9515",
+    "x": 190,
+    "y": 200,
+    "wires": [
+      [
+        "a27e4be40fa9fe2a"
+      ]
+    ]
+  },
+  {
+    "id": "a27e4be40fa9fe2a",
+    "type": "get text",
+    "z": "344d20bdc278fdd1",
+    "name": "",
+    "expected": "Hello",
+    "selector": "tag name",
+    "target": "h1",
+    "mode": "first",
+    "timeout": 1000,
+    "waitFor": 500,
+    "savetofile": false,
+    "x": 180,
+    "y": 280,
+    "wires": [
+      [
+        "b0fae3b2c5f9fc4e"
+      ],
+      [
+        "b29debd04cca249f"
+      ]
+    ]
+  },
+  {
+    "id": "b0fae3b2c5f9fc4e",
+    "type": "switch frame",
+    "z": "344d20bdc278fdd1",
+    "name": "Swith Frame by Number",
+    "switchMode": "number",
+    "frameNumber": "0",
+    "selector": "",
+    "target": "",
+    "timeout": 1000,
+    "waitFor": 500,
+    "savetofile": false,
+    "x": 230,
+    "y": 360,
+    "wires": [
+      [
+        "f53318f966c87c1f"
+      ],
+      [
+        "b29debd04cca249f"
+      ]
+    ]
+  },
+  {
+    "id": "f53318f966c87c1f",
+    "type": "get text",
+    "z": "344d20bdc278fdd1",
+    "name": "",
+    "expected": "Hello World",
+    "selector": "tag name",
+    "target": "h1",
+    "mode": "first",
+    "timeout": 1000,
+    "waitFor": 500,
+    "savetofile": false,
+    "x": 180,
+    "y": 440,
+    "wires": [
+      [
+        "ed1bdac6d446feab"
+      ],
+      [
+        "b29debd04cca249f"
+      ]
+    ]
+  },
+  {
+    "id": "ed1bdac6d446feab",
+    "type": "switch frame",
+    "z": "344d20bdc278fdd1",
+    "name": "Go to Parent",
+    "switchMode": "parent",
+    "frameNumber": "0",
+    "selector": "",
+    "target": "",
+    "timeout": 1000,
+    "waitFor": 500,
+    "savetofile": false,
+    "x": 190,
+    "y": 520,
+    "wires": [
+      [
+        "24a26d30b598ee3d"
+      ],
+      [
+        "b29debd04cca249f"
+      ]
+    ]
+  },
+  {
+    "id": "24a26d30b598ee3d",
+    "type": "get text",
+    "z": "344d20bdc278fdd1",
+    "name": "",
+    "expected": "Hello",
+    "selector": "tag name",
+    "target": "h1",
+    "mode": "first",
+    "timeout": 1000,
+    "waitFor": 500,
+    "savetofile": false,
+    "x": 180,
+    "y": 580,
+    "wires": [
+      [
+        "787e1563e40338a2"
+      ],
+      [
+        "b29debd04cca249f"
+      ]
+    ]
+  },
+  {
+    "id": "787e1563e40338a2",
+    "type": "switch frame",
+    "z": "344d20bdc278fdd1",
+    "name": "Switch Frame by Element",
+    "switchMode": "id",
+    "frameNumber": "0",
+    "selector": "id",
+    "target": "frame-test2",
+    "timeout": 1000,
+    "waitFor": 500,
+    "savetofile": false,
+    "x": 230,
+    "y": 660,
+    "wires": [
+      [
+        "1702b01926daa96b"
+      ],
+      [
+        "b29debd04cca249f"
+      ]
+    ]
+  },
+  {
+    "id": "ac74894930207891",
+    "type": "debug",
+    "z": "344d20bdc278fdd1",
+    "name": "Result",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 930,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "9f9a1b8a621ded0c",
+    "type": "close browser",
+    "z": "344d20bdc278fdd1",
+    "name": "",
+    "waitFor": 500,
+    "x": 770,
+    "y": 580,
+    "wires": [
+      [
+        "ac74894930207891"
+      ]
+    ]
+  },
+  {
+    "id": "c31da43ea5248b78",
+    "type": "link in",
+    "z": "344d20bdc278fdd1",
+    "name": "link in 2",
+    "links": [],
+    "x": 655,
+    "y": 580,
+    "wires": [
+      [
+        "9f9a1b8a621ded0c"
+      ]
+    ]
+  },
+  {
+    "id": "b29debd04cca249f",
+    "type": "link call",
+    "z": "344d20bdc278fdd1",
+    "name": "End",
+    "links": [
+      "c31da43ea5248b78"
+    ],
+    "linkType": "static",
+    "timeout": "30",
+    "x": 810,
+    "y": 340,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "1702b01926daa96b",
+    "type": "get text",
+    "z": "344d20bdc278fdd1",
+    "name": "",
+    "expected": "This is a test",
+    "selector": "tag name",
+    "target": "h1",
+    "mode": "first",
+    "timeout": 1000,
+    "waitFor": 500,
+    "savetofile": false,
+    "x": 180,
+    "y": 740,
+    "wires": [
+      [
+        "b29debd04cca249f"
+      ],
+      [
+        "b29debd04cca249f"
+      ]
+    ]
+  }
+]

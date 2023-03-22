@@ -1,0 +1,328 @@
+[
+  {
+    "id": "d2675214b54e2eb6",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "1c4ef0d6ce86d0c2",
+    "type": "debug",
+    "z": "d2675214b54e2eb6",
+    "name": "debug 7",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 800,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "aee7ce05f216dc40",
+    "type": "inject",
+    "z": "d2675214b54e2eb6",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "http://localhost:1880/",
+    "payloadType": "str",
+    "x": 290,
+    "y": 320,
+    "wires": [
+      [
+        "a5f1a3f84ba73fa0"
+      ]
+    ]
+  },
+  {
+    "id": "a5f1a3f84ba73fa0",
+    "type": "os",
+    "z": "d2675214b54e2eb6",
+    "name": "",
+    "property": "cpus",
+    "x": 550,
+    "y": 260,
+    "wires": [
+      [
+        "1c4ef0d6ce86d0c2"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "96639365.2535b",
+    "type": "debug",
+    "z": "d2675214b54e2eb6",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 910,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "14614bbd.8189d4",
+    "type": "debug",
+    "z": "d2675214b54e2eb6",
+    "name": "testcase's result",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 440,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "bd66d7a6.3da5e8",
+    "type": "delay",
+    "z": "d2675214b54e2eb6",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "1",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "outputs": 1,
+    "x": 420,
+    "y": 600,
+    "wires": [
+      [
+        "fff921a.51a9fe"
+      ]
+    ]
+  },
+  {
+    "id": "fff921a.51a9fe",
+    "type": "function",
+    "z": "d2675214b54e2eb6",
+    "name": "msg.payload.toUpperCase",
+    "func": "\nnode.warn(msg.payload);\nif(msg.payload)\nmsg.payload = msg.payload.toUpperCase();\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 645,
+    "y": 600,
+    "wires": [
+      [
+        "9516c77.67cb238",
+        "96639365.2535b"
+      ]
+    ]
+  },
+  {
+    "id": "51084472.24f87c",
+    "type": "flow-asserter in",
+    "z": "d2675214b54e2eb6",
+    "name": "",
+    "testcases": [
+      {
+        "testId": 0,
+        "input": "aaa",
+        "inputType": "str",
+        "operator": "eq",
+        "assert": "AAA",
+        "assertType": "str"
+      }
+    ],
+    "onlyfail": false,
+    "flowasserterout": "9516c77.67cb238",
+    "x": 245,
+    "y": 660,
+    "wires": [
+      [
+        "bd66d7a6.3da5e8"
+      ],
+      [
+        "14614bbd.8189d4"
+      ]
+    ]
+  },
+  {
+    "id": "9516c77.67cb238",
+    "type": "flow-asserter out",
+    "z": "d2675214b54e2eb6",
+    "name": "xxx",
+    "x": 780,
+    "y": 660,
+    "wires": [
+      [
+        "96639365.2535b"
+      ]
+    ]
+  },
+  {
+    "id": "c2a7b255.38e64",
+    "type": "inject",
+    "z": "d2675214b54e2eb6",
+    "name": "",
+    "props": [
+      {
+        "p": "payload",
+        "v": "aaa",
+        "vt": "str"
+      },
+      {
+        "p": "topic",
+        "v": "",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "aaa",
+    "payloadType": "str",
+    "x": 260,
+    "y": 600,
+    "wires": [
+      [
+        "bd66d7a6.3da5e8"
+      ]
+    ]
+  },
+  {
+    "id": "3af10b6e.bb63a4",
+    "type": "debug",
+    "z": "d2675214b54e2eb6",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "x": 910,
+    "y": 450,
+    "wires": []
+  },
+  {
+    "id": "50cced2b.3b3cb4",
+    "type": "delay",
+    "z": "d2675214b54e2eb6",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "1",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "outputs": 1,
+    "x": 420,
+    "y": 450,
+    "wires": [
+      [
+        "ec7db30c.9442d"
+      ]
+    ]
+  },
+  {
+    "id": "ec7db30c.9442d",
+    "type": "function",
+    "z": "d2675214b54e2eb6",
+    "name": "msg.payload.toUpperCase",
+    "func": "msg.payload = msg.payload.toUpperCase();\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 645,
+    "y": 450,
+    "wires": [
+      [
+        "3af10b6e.bb63a4"
+      ]
+    ]
+  },
+  {
+    "id": "541083d1.eef69c",
+    "type": "inject",
+    "z": "d2675214b54e2eb6",
+    "name": "",
+    "props": [
+      {
+        "p": "payload",
+        "v": "aaa",
+        "vt": "str"
+      },
+      {
+        "p": "topic",
+        "v": "",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "aaa",
+    "payloadType": "str",
+    "x": 260,
+    "y": 450,
+    "wires": [
+      [
+        "50cced2b.3b3cb4"
+      ]
+    ]
+  },
+  {
+    "id": "92012024.64b55",
+    "type": "comment",
+    "z": "d2675214b54e2eb6",
+    "name": "Add flow-asserter",
+    "info": "",
+    "x": 185,
+    "y": 555,
+    "wires": []
+  },
+  {
+    "id": "82263acc.4c26f8",
+    "type": "comment",
+    "z": "d2675214b54e2eb6",
+    "name": "Intact flow",
+    "info": "",
+    "x": 165,
+    "y": 405,
+    "wires": []
+  }
+]
