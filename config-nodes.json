@@ -285,14 +285,5 @@
     "order": 6,
     "disabled": false,
     "hidden": false
-  },
-  {
-    "id": "cd5d82c9a34db22a",
-    "type": "ui_group",
-    "name": "Group 2",
-    "tab": "58c2aa06.ef46e4",
-    "order": 2,
-    "disp": true,
-    "width": 6
   }
 ]
